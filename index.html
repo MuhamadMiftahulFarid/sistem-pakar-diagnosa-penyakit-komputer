@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Penyakit Komputer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('miffff.jpg');
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        select {
+            width: 100%;
+            padding: 1%;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        button {
+            background-color: rgb(38, 0, 128);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 2.5%;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #result {
+            font-weight: bold;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #treatment {
+            font-weight: normal;
+            color: #555;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 70%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 80%;
+            }
+            select {
+                width: 100%;
+                padding: 1%;
+                font-family: 'Roboto', sans-serif;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistem Pakar</h1>
+        <h2>Diagnosa Penyakit Komputer</h2>
+        <p>Nama : Muhmad Miftahul Farid</p>
+        <p>Nim : 21836025</p>
+        <p>kelas : PTI 3B</p>
+        <form id="diagnosisForm">
+            <label for="symptoms">Pilih Salah Satu Penyakit Komputer:</label>
+            <select id="symptoms" multiple>
+                <option value="1">Kinerja komputer lambat dan
+                    Sering muncul pesan kesalahan memory.</option>
+                <option value="2">Kesalahan baca/tulis data dan 
+                    Komputer tidak dapat boot.</option>
+                <option value="3">Kinerja komputer lambat,
+                    Komputer sering freeze.</option>
+                <option value="4">Tampilan layar buram atau terdistorsi dan
+                    Tidak dapat menjalankan aplikasi grafis berat.</option>
+                <option value="5">Komputer mati secara tiba-tiba.
+                    Kipas atau lampu pada casing tidak berfungsi.</option>
+                <option value="6">Komputer sering mati sendiri dan
+                    Suara kipas yang tidak wajar.</option>
+                <option value="7">Tidak ada tanda daya saat tombol power ditekan dan
+                    Beep code atau lampu indikator pada motherboard.</option>
+                <option value="8">Perangkat keras eksternal tidak terdeteksi.
+                    Tidak ada sinyal pada monitor.</option>
+                <option value="9">Lambatnya kinerja komputer dan 
+                    Sering muncul error atau crash sistem.</option>
+                <option value="10">Komputer tidak bisa boot dan 
+                    Perangkat keras seperti printer atau mouse tidak terdeteksi.</option>
+                <option value="11">Munculnya pesan aneh atau iklan tidak diinginkan dan 
+                    Kinerja komputer yang tidak biasa.</option>
+            </select>
+            <button type="button" onclick="diagnose()">Solusi</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function diagnose() {
+            var selectedSymptoms = [];
+            var selectBox = document.getElementById('symptoms');
+            for (var i = 0; i < selectBox.options.length; i++) {
+                if (selectBox.options[i].selected) {
+                    selectedSymptoms.push(selectBox.options[i].value);
+                }
+            }
+
+            var result = "Solusi: ";
+            if (selectedSymptoms.length === 0) {
+                result += "Pilih setidaknya salah satu gejala komputer anda.";
+            } else {
+                if (selectedSymptoms.includes("1")) {
+                    result += "1.Periksa koneksi fisik RAM, Periksa dan bersihkan pin RAM dan Tambahkan atau ganti modul RAM jika perlu";
+
+                } else if (selectedSymptoms.includes("2")) {
+                    result += "Gunakan perangkat lunak diagnostik hard drive dan Ganti hard drive yang rusak";
+                } else if (selectedSymptoms.includes("3")) {
+                    result += "Periksa suhu CPU dan pastikan tidak terlalu panas dan Perbarui atau ganti kipas pendingin CPU jika perlu";
+                } else if (selectedSymptoms.includes("4")) {
+                    result += "Periksa koneksi kartu grafis dan Perbarui driver kartu grafis";
+                } else if (selectedSymptoms.includes("5")) {
+                    result += "Periksa kabel daya dan konektor dan Ganti power supply yang rusa";
+                } else if (selectedSymptoms.includes("6")) {
+                    result += "Bersihkan kipas pendingin dan saluran udara dan Pastikan kipas pendingin berfungsi dengan baik";
+                } else if (selectedSymptoms.includes("7")) {
+                    result += "Periksa koneksi dan kabel pada motherboard dan Ganti motherboard jika rusak";
+                } else if (selectedSymptoms.includes("8")) {
+                    result += "Periksa kabel dan konektor dan Pastikan driver perangkat keras terinstal dengan benar";
+                } else if (selectedSymptoms.includes("9")) {
+                    result += "Lakukan update sistem operasi dan Gunakan perangkat lunak antivirus untuk memeriksa dan menghapus malware";
+                } else if (selectedSymptoms.includes("10")) {
+                    result += "Periksa kabel dan konektor perangkat keras dan Pastikan driver perangkat keras terpasang dengan benar";
+                } else if (selectedSymptoms.includes("11")) {
+                    result += "Jalankan pemindaian antivirus dan hapus file yang terinfeksi dan Perbarui perangkat lunak antivirus secara berkala";
+                } else {
+                    result += "Tidak dapat menentukan penyakit komputer.";
+                }
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
